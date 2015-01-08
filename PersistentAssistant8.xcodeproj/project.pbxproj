@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD4323A11A5F465700472E27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4323A01A5F465700472E27 /* Foundation.framework */; };
+		CD4323B21A5F465700472E27 /* PersistentAssistant8.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD4323B11A5F465700472E27 /* PersistentAssistant8.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CD43239D1A5F465700472E27 /* PersistentAssistant8.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = PersistentAssistant8.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD4323A01A5F465700472E27 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CD4323A51A5F465700472E27 /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
+		CD4323A61A5F465700472E27 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		CD4323A81A5F465700472E27 /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		CD4323AC1A5F465700472E27 /* PersistentAssistant8.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PersistentAssistant8.plist; path = Package/Library/PreferenceLoader/Preferences/PersistentAssistant8.plist; sourceTree = "<group>"; };
+		CD4323AD1A5F465700472E27 /* PersistentAssistant8Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PersistentAssistant8Icon.png; path = Package/Library/PreferenceLoader/Preferences/PersistentAssistant8Icon.png; sourceTree = "<group>"; };
+		CD4323AE1A5F465700472E27 /* PersistentAssistant8Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PersistentAssistant8Icon@2x.png"; path = "Package/Library/PreferenceLoader/Preferences/PersistentAssistant8Icon@2x.png"; sourceTree = "<group>"; };
+		CD4323AF1A5F465700472E27 /* PersistentAssistant8-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersistentAssistant8-Prefix.pch"; sourceTree = "<group>"; };
+		CD4323B01A5F465700472E27 /* PersistentAssistant8.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = PersistentAssistant8.xm; sourceTree = "<group>"; };
+		CD4323B11A5F465700472E27 /* PersistentAssistant8.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PersistentAssistant8.mm; sourceTree = "<group>"; };
+		CD4323B51A5F465700472E27 /* PersistentAssistant8.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PersistentAssistant8.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/PersistentAssistant8.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD4323991A5F465700472E27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4323A11A5F465700472E27 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD4323921A5F465700472E27 = {
+			isa = PBXGroup;
+			children = (
+				CD4323A21A5F465700472E27 /* PersistentAssistant8 */,
+				CD43239F1A5F465700472E27 /* Frameworks */,
+				CD43239E1A5F465700472E27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD43239E1A5F465700472E27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD43239D1A5F465700472E27 /* PersistentAssistant8.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD43239F1A5F465700472E27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323A01A5F465700472E27 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD4323A21A5F465700472E27 /* PersistentAssistant8 */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323B01A5F465700472E27 /* PersistentAssistant8.xm */,
+				CD4323B11A5F465700472E27 /* PersistentAssistant8.mm */,
+				CD4323A31A5F465700472E27 /* Package */,
+				CD4323A71A5F465700472E27 /* Supporting Files */,
+			);
+			path = PersistentAssistant8;
+			sourceTree = "<group>";
+		};
+		CD4323A31A5F465700472E27 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323A41A5F465700472E27 /* DEBIAN */,
+				CD4323A91A5F465700472E27 /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		CD4323A41A5F465700472E27 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323A51A5F465700472E27 /* control.txt */,
+				CD4323A61A5F465700472E27 /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		CD4323A71A5F465700472E27 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323A81A5F465700472E27 /* PackageVersion.plist */,
+				CD4323AF1A5F465700472E27 /* PersistentAssistant8-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD4323A91A5F465700472E27 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323AA1A5F465700472E27 /* PreferenceLoader */,
+				CD4323B31A5F465700472E27 /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		CD4323AA1A5F465700472E27 /* PreferenceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323AB1A5F465700472E27 /* Preferences */,
+			);
+			name = PreferenceLoader;
+			sourceTree = "<group>";
+		};
+		CD4323AB1A5F465700472E27 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323AC1A5F465700472E27 /* PersistentAssistant8.plist */,
+				CD4323AD1A5F465700472E27 /* PersistentAssistant8Icon.png */,
+				CD4323AE1A5F465700472E27 /* PersistentAssistant8Icon@2x.png */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
+		CD4323B31A5F465700472E27 /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323B41A5F465700472E27 /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		CD4323B41A5F465700472E27 /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				CD4323B51A5F465700472E27 /* PersistentAssistant8.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CD43239A1A5F465700472E27 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CD43239C1A5F465700472E27 /* PersistentAssistant8 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD4323B81A5F465700472E27 /* Build configuration list for PBXNativeTarget "PersistentAssistant8" */;
+			buildPhases = (
+				CD4323971A5F465700472E27 /* ShellScript */,
+				CD4323981A5F465700472E27 /* Sources */,
+				CD4323991A5F465700472E27 /* Frameworks */,
+				CD43239A1A5F465700472E27 /* Headers */,
+				CD43239B1A5F465700472E27 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersistentAssistant8;
+			productName = PersistentAssistant8;
+			productReference = CD43239D1A5F465700472E27 /* PersistentAssistant8.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD4323931A5F465700472E27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					CD43239C1A5F465700472E27 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = CD4323961A5F465700472E27 /* Build configuration list for PBXProject "PersistentAssistant8" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CD4323921A5F465700472E27;
+			productRefGroup = CD43239E1A5F465700472E27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD43239C1A5F465700472E27 /* PersistentAssistant8 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD4323971A5F465700472E27 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp-logos";
+		};
+		CD43239B1A5F465700472E27 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD4323981A5F465700472E27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD4323B21A5F465700472E27 /* PersistentAssistant8.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CD4323B61A5F465700472E27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Debug;
+		};
+		CD4323B71A5F465700472E27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Release;
+		};
+		CD4323B91A5F465700472E27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PersistentAssistant8/PersistentAssistant8-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Debug;
+		};
+		CD4323BA1A5F465700472E27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PersistentAssistant8/PersistentAssistant8-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD4323961A5F465700472E27 /* Build configuration list for PBXProject "PersistentAssistant8" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4323B61A5F465700472E27 /* Debug */,
+				CD4323B71A5F465700472E27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD4323B81A5F465700472E27 /* Build configuration list for PBXNativeTarget "PersistentAssistant8" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD4323B91A5F465700472E27 /* Debug */,
+				CD4323BA1A5F465700472E27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CD4323931A5F465700472E27 /* Project object */;
+}
