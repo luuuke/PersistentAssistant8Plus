@@ -5,3 +5,44 @@
 #ifdef __OBJC__
 	#import <Foundation/Foundation.h>
 #endif
+
+//DEBUG section
+
+//#define DEBUG 1
+#undef DEBUG
+//#define kLogFilePath @"/var/mobile/Documents/de.ng.persistentassistant8.log"
+#define kLogPrefix @"[PersistentAssistant8] "
+
+static void LWLog(NSString* format, ...){
+    va_list args;
+    va_start(args, format);
+    NSString* joinedStrings=[[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+#ifdef kLogPrefix
+    NSLog(@"%@ %@", kLogPrefix, joinedStrings);
+#else
+    NSLog(@"%@", joinedStrings);
+#endif
+#ifdef kLogFilePath
+    joinedStrings=[[NSString alloc] initWithFormat:@"%@ %@: %@\n", [[NSDate date] description], [[NSProcessInfo processInfo] processName], joinedStrings];
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:kLogFilePath]){
+        [joinedStrings writeToFile:kLogFilePath atomically:NO encoding:NSUTF8StringEncoding error:nil];
+    }else{
+        NSFileHandle *myHandle=[NSFileHandle fileHandleForWritingAtPath:kLogFilePath];
+        [myHandle seekToEndOfFile];
+        [myHandle writeData:[joinedStrings dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+#endif
+#if  ! __has_feature(objc_arc)
+    [joinedStrings release];
+#endif
+}
+
+#ifdef DEBUG
+#   define LWLog(...) LWLog(__VA_ARGS__)
+#else
+#   define LWLog(...)
+#endif
+
+//DEBUG section end

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CD4323A11A5F465700472E27 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4323A01A5F465700472E27 /* Foundation.framework */; };
 		CD4323B21A5F465700472E27 /* PersistentAssistant8.mm in Sources */ = {isa = PBXBuildFile; fileRef = CD4323B11A5F465700472E27 /* PersistentAssistant8.mm */; };
+		CD4323BC1A5F467200472E27 /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4323BB1A5F467200472E27 /* libsubstrate.dylib */; };
+		CD4323BE1A5F46FF00472E27 /* AssistantServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4323BD1A5F46FF00472E27 /* AssistantServices.framework */; };
+		CD4323C01A62C40B00472E27 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD4323BF1A62C40B00472E27 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +24,12 @@
 		CD4323AD1A5F465700472E27 /* PersistentAssistant8Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PersistentAssistant8Icon.png; path = Package/Library/PreferenceLoader/Preferences/PersistentAssistant8Icon.png; sourceTree = "<group>"; };
 		CD4323AE1A5F465700472E27 /* PersistentAssistant8Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PersistentAssistant8Icon@2x.png"; path = "Package/Library/PreferenceLoader/Preferences/PersistentAssistant8Icon@2x.png"; sourceTree = "<group>"; };
 		CD4323AF1A5F465700472E27 /* PersistentAssistant8-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersistentAssistant8-Prefix.pch"; sourceTree = "<group>"; };
-		CD4323B01A5F465700472E27 /* PersistentAssistant8.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = PersistentAssistant8.xm; sourceTree = "<group>"; };
+		CD4323B01A5F465700472E27 /* PersistentAssistant8.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = PersistentAssistant8.xm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		CD4323B11A5F465700472E27 /* PersistentAssistant8.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PersistentAssistant8.mm; sourceTree = "<group>"; };
 		CD4323B51A5F465700472E27 /* PersistentAssistant8.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PersistentAssistant8.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/PersistentAssistant8.plist; sourceTree = "<group>"; };
+		CD4323BB1A5F467200472E27 /* libsubstrate.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsubstrate.dylib; path = ../../../../opt/iOSOpenDev/lib/libsubstrate.dylib; sourceTree = "<group>"; };
+		CD4323BD1A5F46FF00472E27 /* AssistantServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssistantServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/PrivateFrameworks/AssistantServices.framework; sourceTree = DEVELOPER_DIR; };
+		CD4323BF1A62C40B00472E27 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4323C01A62C40B00472E27 /* UIKit.framework in Frameworks */,
+				CD4323BE1A5F46FF00472E27 /* AssistantServices.framework in Frameworks */,
+				CD4323BC1A5F467200472E27 /* libsubstrate.dylib in Frameworks */,
 				CD4323A11A5F465700472E27 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +67,9 @@
 		CD43239F1A5F465700472E27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD4323BF1A62C40B00472E27 /* UIKit.framework */,
+				CD4323BD1A5F46FF00472E27 /* AssistantServices.framework */,
+				CD4323BB1A5F467200472E27 /* libsubstrate.dylib */,
 				CD4323A01A5F465700472E27 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -231,7 +243,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp\nlocalrespring";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -306,9 +318,17 @@
 				CODE_SIGN_IDENTITY = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PersistentAssistant8/PersistentAssistant8-Prefix.pch";
 				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
@@ -326,9 +346,17 @@
 				CODE_SIGN_IDENTITY = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PersistentAssistant8/PersistentAssistant8-Prefix.pch";
 				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				iOSOpenDevBuildPackageOnAnyBuild = NO;
 				iOSOpenDevCopyOnBuild = NO;
@@ -359,6 +387,7 @@
 				CD4323BA1A5F465700472E27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
