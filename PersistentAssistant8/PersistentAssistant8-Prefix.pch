@@ -10,7 +10,7 @@
 
 //#define DEBUG 1
 #undef DEBUG
-//#define kLogFilePath @"/var/mobile/Documents/de.ng.persistentassistant8.log"
+#define kLogFilePath @"/var/mobile/Documents/de.ng.persistentassistant8.log"
 #define kLogPrefix @"[PersistentAssistant8] "
 
 static void LWLog(NSString* format, ...){

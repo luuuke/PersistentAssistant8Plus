@@ -5,6 +5,7 @@
 
 @interface AFUISiriViewController : UIViewController
 -(void)siriViewDidReceiveStartSpeechRequestAction:(id)arg1;
+-(void)siriViewDidRecieveStatusViewTappedAction:(id)arg1 ; 
 -(void)dismissSiriRemoteViewController:(id)arg1;
 -(BOOL)isListening;
 @end
@@ -13,6 +14,7 @@
 	UIViewController* _mainScreenViewController;
 }
 +(instancetype)sharedInstance;
+-(void)dismissAssistantViewIfNecessary:(NSInteger)arg1;
 @end
 
 @interface AFUISpeechSynthesis : NSObject
@@ -44,16 +46,16 @@ static void settingsChanged(CFNotificationCenterRef center, void *observer, CFSt
 
 #include <logos/logos.h>
 #include <substrate.h>
-@class SBAssistantController; @class AFUISiriViewController; @class AFUISpeechSynthesis; 
-static void (*_logos_orig$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$)(AFUISiriViewController*, SEL, id); static void _logos_method$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$(AFUISiriViewController*, SEL, id); static void (*_logos_orig$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$)(AFUISpeechSynthesis*, SEL, id, id, BOOL, id); static void _logos_method$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$(AFUISpeechSynthesis*, SEL, id, id, BOOL, id); 
+@class AFUISiriViewController; @class AFUISpeechSynthesis; @class SBAssistantController; @class AFConnection; 
+static void (*_logos_orig$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$)(AFUISiriViewController*, SEL, id); static void _logos_method$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$(AFUISiriViewController*, SEL, id); static void (*_logos_orig$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$)(AFUISpeechSynthesis*, SEL, id, id, BOOL, id); static void _logos_method$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$(AFUISpeechSynthesis*, SEL, id, id, BOOL, id); static void (*_logos_orig$_ungrouped$AFConnection$prepareForPhoneCall)(AFConnection*, SEL); static void _logos_method$_ungrouped$AFConnection$prepareForPhoneCall(AFConnection*, SEL); 
 static __inline__ __attribute__((always_inline)) Class _logos_static_class_lookup$SBAssistantController(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("SBAssistantController"); } return _klass; }
-#line 44 "/Users/ng/Dropbox/PersistentAssistant8/PersistentAssistant8/PersistentAssistant8.xm"
+#line 46 "/Users/ng/Dropbox/PersistentAssistant8/PersistentAssistant8/PersistentAssistant8.xm"
 
 
 static void _logos_method$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$(AFUISiriViewController* self, SEL _cmd, id arg1){
-	_logos_orig$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$(self, _cmd, arg1);
 	LWLog(@"(%f) -[AFUISiriViewController dismissSiriRemoteViewController:]", CFAbsoluteTimeGetCurrent());
 	if(_enabled) _siriWillDismiss=YES;
+	_logos_orig$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$(self, _cmd, arg1);
 }
 
 
@@ -70,7 +72,12 @@ static void _logos_method$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFi
 			if(!_siriWillDismiss){
 				AFUISiriViewController* siriController=MSHookIvar<AFUISiriViewController*>([_logos_static_class_lookup$SBAssistantController() sharedInstance], "_mainScreenViewController");
 				if(![self isSpeaking] && ![siriController isListening]){
-					[siriController siriViewDidReceiveStartSpeechRequestAction:nil];
+					if([siriController respondsToSelector:@selector(siriViewDidReceiveStartSpeechRequestAction:)]) {
+						[siriController siriViewDidReceiveStartSpeechRequestAction:nil];
+					} else if ([siriController respondsToSelector:@selector(siriViewDidRecieveStatusViewTappedAction:)]) {
+						[siriController siriViewDidRecieveStatusViewTappedAction:nil];
+					}
+					
 					LWLog(@"Listening again");
 				}else{
 					LWLog(@"Not listening again: isSpeaking=%i, isListening=%i", [self isSpeaking], [siriController isListening]);
@@ -85,9 +92,19 @@ static void _logos_method$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFi
 
 
 
+
+
+static void _logos_method$_ungrouped$AFConnection$prepareForPhoneCall(AFConnection* self, SEL _cmd){
+	LWLog(@"Preparing for phone call");
+	if(_enabled) _siriWillDismiss=YES;
+	_logos_orig$_ungrouped$AFConnection$prepareForPhoneCall(self, _cmd);
+}
+
+
+
 #pragma mark - Constructor
 
-static __attribute__((constructor)) void _logosLocalCtor_edc80979(){
+static __attribute__((constructor)) void _logosLocalCtor_5420306b(){
 	LWLog(@"is in the hood");
 	if(dlopen("/System/Library/PrivateFrameworks/AssistantUI.framework/AssistantUI", RTLD_LAZY)){
 		LWLog(@"dlopened AssistantUI.framework lazily");
@@ -96,5 +113,5 @@ static __attribute__((constructor)) void _logosLocalCtor_edc80979(){
 	loadSettings();
 }
 static __attribute__((constructor)) void _logosLocalInit() {
-{Class _logos_class$_ungrouped$AFUISiriViewController = objc_getClass("AFUISiriViewController"); MSHookMessageEx(_logos_class$_ungrouped$AFUISiriViewController, @selector(dismissSiriRemoteViewController:), (IMP)&_logos_method$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$, (IMP*)&_logos_orig$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$);Class _logos_class$_ungrouped$AFUISpeechSynthesis = objc_getClass("AFUISpeechSynthesis"); MSHookMessageEx(_logos_class$_ungrouped$AFUISpeechSynthesis, @selector(speechSynthesizer:didFinishSpeakingRequest:successfully:withError:), (IMP)&_logos_method$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$, (IMP*)&_logos_orig$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$);} }
-#line 91 "/Users/ng/Dropbox/PersistentAssistant8/PersistentAssistant8/PersistentAssistant8.xm"
+{Class _logos_class$_ungrouped$AFUISiriViewController = objc_getClass("AFUISiriViewController"); MSHookMessageEx(_logos_class$_ungrouped$AFUISiriViewController, @selector(dismissSiriRemoteViewController:), (IMP)&_logos_method$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$, (IMP*)&_logos_orig$_ungrouped$AFUISiriViewController$dismissSiriRemoteViewController$);Class _logos_class$_ungrouped$AFUISpeechSynthesis = objc_getClass("AFUISpeechSynthesis"); MSHookMessageEx(_logos_class$_ungrouped$AFUISpeechSynthesis, @selector(speechSynthesizer:didFinishSpeakingRequest:successfully:withError:), (IMP)&_logos_method$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$, (IMP*)&_logos_orig$_ungrouped$AFUISpeechSynthesis$speechSynthesizer$didFinishSpeakingRequest$successfully$withError$);Class _logos_class$_ungrouped$AFConnection = objc_getClass("AFConnection"); MSHookMessageEx(_logos_class$_ungrouped$AFConnection, @selector(prepareForPhoneCall), (IMP)&_logos_method$_ungrouped$AFConnection$prepareForPhoneCall, (IMP*)&_logos_orig$_ungrouped$AFConnection$prepareForPhoneCall);} }
+#line 108 "/Users/ng/Dropbox/PersistentAssistant8/PersistentAssistant8/PersistentAssistant8.xm"

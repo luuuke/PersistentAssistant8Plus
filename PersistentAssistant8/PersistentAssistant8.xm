@@ -4,6 +4,7 @@
 
 @interface AFUISiriViewController : UIViewController
 -(void)siriViewDidReceiveStartSpeechRequestAction:(id)arg1;
+-(void)siriViewDidRecieveStatusViewTappedAction:(id)arg1 ; // iOS 9
 -(void)dismissSiriRemoteViewController:(id)arg1;
 -(BOOL)isListening;
 @end
@@ -12,6 +13,7 @@
 	UIViewController* _mainScreenViewController;
 }
 +(instancetype)sharedInstance;
+-(void)dismissAssistantViewIfNecessary:(NSInteger)arg1;
 @end
 
 @interface AFUISpeechSynthesis : NSObject
@@ -44,9 +46,9 @@ static void settingsChanged(CFNotificationCenterRef center, void *observer, CFSt
 %hook AFUISiriViewController
 
 -(void)dismissSiriRemoteViewController:(id)arg1{
-	%orig;
 	LWLog(@"(%f) -[AFUISiriViewController dismissSiriRemoteViewController:]", CFAbsoluteTimeGetCurrent());
 	if(_enabled) _siriWillDismiss=YES;
+	%orig;
 }
 
 %end
@@ -63,7 +65,12 @@ static void settingsChanged(CFNotificationCenterRef center, void *observer, CFSt
 			if(!_siriWillDismiss){
 				AFUISiriViewController* siriController=MSHookIvar<AFUISiriViewController*>([%c(SBAssistantController) sharedInstance], "_mainScreenViewController");
 				if(![self isSpeaking] && ![siriController isListening]){
-					[siriController siriViewDidReceiveStartSpeechRequestAction:nil];
+					if([siriController respondsToSelector:@selector(siriViewDidReceiveStartSpeechRequestAction:)]) {
+						[siriController siriViewDidReceiveStartSpeechRequestAction:nil];
+					} else if ([siriController respondsToSelector:@selector(siriViewDidRecieveStatusViewTappedAction:)]) {
+						[siriController siriViewDidRecieveStatusViewTappedAction:nil];
+					}
+					
 					LWLog(@"Listening again");
 				}else{
 					LWLog(@"Not listening again: isSpeaking=%i, isListening=%i", [self isSpeaking], [siriController isListening]);
@@ -74,6 +81,16 @@ static void settingsChanged(CFNotificationCenterRef center, void *observer, CFSt
 			}
 		});
 	}
+}
+
+%end
+
+%hook AFConnection
+
+-(void)prepareForPhoneCall{
+	LWLog(@"Preparing for phone call");
+	if(_enabled) _siriWillDismiss=YES;
+	%orig;
 }
 
 %end
